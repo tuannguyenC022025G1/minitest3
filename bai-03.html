@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> bài 3</title>
+</head>
+<body>
+<h2>Nhập mảng và đếm số chẵn</h2>
+
+<label for="arrayInput">Nhập mảng:</label>
+<input type="text" id="arrayInput" required><br><br>
+
+<button type="button" onclick="countEvenNumbers()">Đếm số chẵn</button>
+
+<h3>Kết quả:</h3>
+<p id="result"></p>
+
+<script>
+
+    function countEvenNumbers() {
+        let inputArray = document.getElementById("arrayInput").value;
+        let arr = inputArray.split(',').map(item => parseInt(item));
+
+        if (arr.length === 0 || arr.includes(NaN)) {  //includes kiểm tra trong mảng có NaN ko, trả về true/false
+            document.getElementById("result").innerText = "Vui lòng nhập mảng hợp lệ!";
+            return;
+        }
+
+        let countEven = arr.filter(num => num % 2 === 0).length;
+
+        document.getElementById("result").innerText = "Số lượng số chẵn trong mảng: " + countEven;
+    }
+</script>
+</body>
+</html>

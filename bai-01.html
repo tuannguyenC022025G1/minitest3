@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1</title>
+</head>
+<body>
+<script>
+    function deleteElement(arr, numToDelete) {
+        let newArr = [];
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] !== numToDelete) {
+                newArr.push(arr[i]);
+            }
+        }
+        return newArr;
+    }
+
+    function handleInput() {
+
+        let inputArray = prompt("Nhập mảng (các phần tử cách nhau bởi dấu phẩy):");
+        if (inputArray === null) return;
+
+        let arr = inputArray.split(',');
+
+        let numToDelete = prompt("Nhập số cần xóa:");
+
+        let result = deleteElement(arr, numToDelete);
+        alert("Mảng sau khi xóa phần tử: " + result.join(', '));
+    }
+    handleInput();
+</script>
+</body>
+</html>

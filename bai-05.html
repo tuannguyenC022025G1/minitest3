@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>bài 5</title>
+</head>
+<body>
+<h2>Tính tổng các số nguyên tố</h2>
+
+<label for="arrayInput">Nhập mảng:</label>
+<input type="text" id="arrayInput" required><br><br>
+
+<button type="button" onclick="sumPrimeNumbers()">Tính tổng</button>
+
+<h3>Kết quả:</h3>
+<p id="result"></p>
+
+<script>
+  function isPrime(num) {
+    if (num <= 1) return false;
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i === 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function sumPrimeNumbers() {
+
+    let inputArray = document.getElementById("arrayInput").value;
+    let arr = [];
+    let temp = '';
+
+    for (let i = 0; i < inputArray.length; i++) {
+      if (inputArray[i] === ',') {
+        if (temp) arr.push(temp);
+        temp = '';
+      } else {
+        temp += inputArray[i];
+      }
+    }
+    if (temp) arr.push(temp);
+
+    if (arr.length === 0) {
+      document.getElementById("result").innerText = "Vui lòng nhập mảng hợp lệ!";
+      return;
+    }
+
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+      let num = parseInt(arr[i]);
+      if (!isNaN(num) && isPrime(num)) {
+        sum += num;
+      }
+    }
+
+    document.getElementById("result").innerText = `Tổng các số nguyên tố trong mảng: ${sum}`;
+  }
+</script>
+</body>
+</html>

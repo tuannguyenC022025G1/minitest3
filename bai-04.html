@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>bài 4</title>
+</head>
+<body>
+<h2>Đếm số lần xuất hiện</h2>
+
+<label for="arrayInput">Nhập mảng:</label>
+<input type="text" id="arrayInput" required><br><br>
+
+<label for="elementInput">Nhập phần tử cần đếm:</label>
+<input type="text" id="elementInput" required><br><br>
+
+<button type="button" onclick="countOccurrences()">Đếm</button>
+
+<h3>Kết quả:</h3>
+<p id="result"></p>
+
+<script>
+  function countOccurrences() {
+    let inputArray = document.getElementById("arrayInput").value;
+    let arr = inputArray.split(',');
+
+    let elementToCount = document.getElementById("elementInput").value;
+
+    if (arr.length === 0 || elementToCount === "") {
+      document.getElementById("result").innerText = "Vui lòng nhập mảng và phần tử cần đếm hợp lệ!";
+      return;
+    }
+    let count = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === elementToCount) {
+        count++;
+      }
+    }
+    document.getElementById("result").innerText = `Số lần xuất hiện của phần tử "${elementToCount}": ${count}`;
+  }
+</script>
+</body>
+</html>
